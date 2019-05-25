@@ -1,0 +1,4 @@
+dramatiq[rabbitmq]==latest
+requests==latest
+watchdog_gevent==latest
+watchdog==latest
