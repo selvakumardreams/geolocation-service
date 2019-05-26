@@ -46,8 +46,10 @@ def print_error(message_data, exception_data):
 @dramatiq.actor(store_results=True)
 def geo_location(location):
         if _validate_input(location):
+            latlng = Location(location)
+            location = latlng.lat, latlng.lang
             g = geocoder.osm(location, method="reverse")
-            return g.housenumber, g.street, g.postal, g.city
+            return g.street, g.housenumber, g.postal, g.city, g.country
         else:
             g = geocoder.osm(location)
             return g.latlng

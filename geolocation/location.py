@@ -1,6 +1,5 @@
 import re
 
-
 class Location(object):
     """
     Location Object
@@ -11,7 +10,7 @@ class Location(object):
     def __init__(self, location):
         self.location = location
         self._validate_location(location)
-    
+
     def _validate_location(self, location):
         if isinstance(location, str):
             expr = r"[-]?\d+[.]?[-]?[\d]+"
@@ -39,3 +38,9 @@ class Location(object):
                     raise ValueError("Not within geographical")
             else:
                 raise ValueError("lat and lang should be numbers")
+
+
+if __name__ == "__main__":
+    latlng = Location("55.674136, 12.571782")
+    location = latlng.lat, latlng.lang
+    print(location)
