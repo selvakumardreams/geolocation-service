@@ -17,6 +17,10 @@ dramatiq.set_broker(broker)
 
 
 def _validate_input(location):
+    """
+    Validate location input 
+    @return True if address else false
+    """
     expr = r"[A-Za-z]+"
     pattern = re.compile(expr)
     match = pattern.findall(location)
@@ -31,12 +35,18 @@ def _validate_input(location):
 
 @dramatiq.actor
 def print_result(message_data, result):
+    """
+    On success print result
+    """
     logger.info(
         f"The result of message {message_data['message_id']} was {result}.")
 
 
 @dramatiq.actor
 def print_error(message_data, exception_data):
+    """
+    On error print message
+    """
     logger.error(f"Message {message_data['message_id']} failed:")
     logger.error(f"  * type: {exception_data['type']}")
     logger.error(f"  * message: {exception_data['message']!r}")
@@ -44,6 +54,10 @@ def print_error(message_data, exception_data):
 
 @dramatiq.actor(store_results=True)
 def geo_location(location):
+    """
+    Geocoding of addresses and reverse-geocoding 
+    of long/lat coordinates.
+    """
     try:
         if _validate_input(location):
             latlng = Location(location)
@@ -58,6 +72,9 @@ def geo_location(location):
         raise ex
 
 def main(args):
+    """
+    Main block
+    """
     message = geo_location.send_with_options(
         args=(args,),
         on_failure=print_error,

@@ -1,18 +1,33 @@
 import sys
 
 def trace(msg):
+    """
+    Trace log
+    """
     console('TRACE', msg)
 
 def debug(msg):
+    """
+    Debug log
+    """
     console('DEBUG', msg)
 
 def info(msg):
+    """
+    Info log
+    """
     console('INFO', msg)
 
 def warn(msg):
+    """
+    Warn log
+    """
     console('WARN', msg)
 
 def error(msg):
+    """
+    Error log
+    """
     console('ERROR', msg)
 
 def console(tag, msg, newline=True, stream='stdout'):

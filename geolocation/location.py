@@ -12,6 +12,9 @@ class Location(object):
         self._validate_location(location)
 
     def _validate_location(self, location):
+        """
+        Validate location input
+        """
         if isinstance(location, str):
             expr = r"[-]?\d+[.]?[-]?[\d]+"
             pattern = re.compile(expr)
@@ -21,6 +24,9 @@ class Location(object):
                 self._latlng_standard([lat, lang])
 
     def _latlng_standard(self, location):
+        """
+        Validate lat lang geography boundaries
+        """
         # https://gisgeography.com/latitude-longitude-coordinates/
         if len(location) == 2:
             lat = float(location[0])
