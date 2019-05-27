@@ -1,6 +1,5 @@
 import re
 import dramatiq
-import requests
 import sys
 import geocoder
 from utils import logger
@@ -45,6 +44,7 @@ def print_error(message_data, exception_data):
 
 @dramatiq.actor(store_results=True)
 def geo_location(location):
+    try:
         if _validate_input(location):
             latlng = Location(location)
             location = latlng.lat, latlng.lang
@@ -53,7 +53,9 @@ def geo_location(location):
         else:
             g = geocoder.osm(location)
             return g.latlng
-
+    except Exception as ex:
+        logger.error(str(ex))
+        raise ex
 
 def main(args):
     message = geo_location.send_with_options(

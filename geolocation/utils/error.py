@@ -1,3 +1,4 @@
+
 class GeolocationError(Exception):
     """
     Base class for Geolocation errors
