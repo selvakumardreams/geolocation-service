@@ -36,6 +36,7 @@ RUN pip install pip --upgrade
 ADD requirements.txt /
 
 RUN pip install -r requirements.txt
+
 ADD . /
 
 RUN chmod +x /dramatiq.sh
