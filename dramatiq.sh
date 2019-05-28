@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 dramatiq geolocation/main.py
  
