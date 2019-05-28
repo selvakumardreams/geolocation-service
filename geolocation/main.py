@@ -38,8 +38,7 @@ def print_result(message_data, result):
     """
     On success print result
     """
-    logger.info(
-        f"The result of message {message_data['message_id']} was {result}.")
+    logger.info(f"The result of message {message_data['message_id']} was {result}.")
 
 
 @dramatiq.actor

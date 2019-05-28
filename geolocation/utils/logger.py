@@ -1,3 +1,6 @@
+"""
+Logger
+"""
 import sys
 
 def trace(msg):
@@ -40,6 +43,4 @@ def console(tag, msg, newline=True, stream='stdout'):
     stream = sys.__stdout__ if stream.lower() != 'stderr' else sys.__stderr__
     stream.write(msg)
     stream.flush
-
-
     

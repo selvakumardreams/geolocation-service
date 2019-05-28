@@ -1,3 +1,6 @@
+"""
+Location
+"""
 import re
 
 class Location(object):

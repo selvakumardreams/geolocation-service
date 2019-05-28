@@ -10,8 +10,10 @@ class GeolocationError(Exception):
 
     @property
     def message(self):
+        """
+        Print Message
+        """
         print(self)
-    
 
     class DataError(GeolocationError):
         """
